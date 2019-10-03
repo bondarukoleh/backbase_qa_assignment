@@ -1,0 +1,45 @@
+{
+  "name": "backbase_qa_assignment",
+  "version": "1.0.0",
+  "description": "Skeleton of protractor test automation framework",
+  "scripts": {
+    "pretest": "npm run lint",
+    "test": "protractor protractor.conf.js",
+    "lint": "tslint -p ./tsconfig.json",
+    "tsc": "tsc",
+    "tscw": "tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bondarukoleh/backbase_qa_assignment.git"
+  },
+  "keywords": [],
+  "author": "Oleh bondaruk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bondarukoleh/backbase_qa_assignment/issues"
+  },
+  "homepage": "https://github.com/bondarukoleh/backbase_qa_assignment#readme",
+  "dependencies": {
+    "@types/chai": "^4.1.2",
+    "@types/mocha": "2.2.41",
+    "@types/node": "8.0.24",
+    "allure-commandline": "^2.9.0",
+    "chai": "4.1.1",
+    "minimist": "^1.2.0",
+    "mocha": "^6.0.2",
+    "mocha-allure-reporter": "^1.4.0",
+    "moment": "^2.22.2",
+    "moment-timezone": "^0.5.17",
+    "precommit-hook": "^3.0.0",
+    "protractor": "^5.4.2",
+    "request-promise": "^4.2.2",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "3.1.6"
+  },
+  "pre-commit": [
+    "lint",
+    "tsc"
+  ]
+}
