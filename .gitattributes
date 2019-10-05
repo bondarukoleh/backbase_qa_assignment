@@ -1,3 +1,0 @@
-* text=auto
-# Unix files (need LF)
-*.sh eol=lf
