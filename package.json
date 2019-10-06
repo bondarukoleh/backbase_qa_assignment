@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "description": "Skeleton of protractor test automation framework",
   "scripts": {
-    "pretest": "npm run lint",
+    "pretest": "npm run lint && npm run tsc",
     "test": "protractor protractor.conf.js",
+    "test:debug": "protractor protractor.conf.js --debugging",
+    "test:direct": "protractor protractor.conf.js --directConnect",
     "lint": "tslint -p ./tsconfig.json",
     "tsc": "tsc",
-    "tscw": "tsc -w"
+    "tscw": "tsc -w",
+    "report": "allure generate -c && allure open",
+    "postinstall": "webdriver-manager update --gecko=false"
   },
   "repository": {
     "type": "git",
@@ -26,7 +30,6 @@
     "@types/node": "8.0.24",
     "allure-commandline": "^2.9.0",
     "chai": "4.1.1",
-    "minimist": "^1.2.0",
     "mocha": "^6.0.2",
     "mocha-allure-reporter": "^1.4.0",
     "moment": "^2.22.2",
