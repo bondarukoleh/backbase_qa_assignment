@@ -12,7 +12,7 @@ const config: Config = {
     fullTrace: true,
     reporter: ENV_ARGS.includes('--debugging') ? 'spec' : 'mocha-allure-reporter'
   },
-  specs: ['./specs/delete.*'],
+  specs: ['./specs/*.spec.*'],
   baseUrl: urls.main,
   allScriptsTimeout: 30 * 1000,
   capabilities: {
