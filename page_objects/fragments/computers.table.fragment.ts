@@ -1,23 +1,23 @@
-import {Table, ITable} from '../elements'
+import {Table, ITable, Text, IText} from '../elements'
 import {IComputerData} from './shared.form.fragment'
 import {ElementFinder} from 'protractor'
-import {step} from '../../helpers';
+import {step} from '../../helpers'
 import {$} from 'protractor'
 
 interface IComputersTable {
   /* Here should be navigation also */
   getComputersData: () => Promise<IComputerData[]>
   clickOnComputer: (computerName: string) => Promise<void>
-  getNoData: () => Promise<string>
+  getNoDataText: () => Promise<string>
 }
 
 class ComputersTable implements IComputersTable {
   private table: ITable
-  private noData: ElementFinder
+  private noData: IText
 
   constructor(private tableRoot: ElementFinder) {
     this.table = new Table(this.tableRoot)
-    this.noData = $('div.well')
+    this.noData = new Text($('div.well'))
   }
 
   @step('Clicking on computer from computer table')
@@ -31,8 +31,8 @@ class ComputersTable implements IComputersTable {
   }
 
   @step(`Getting no data text`)
-  public async getNoData(): Promise<string> {
-    return this.noData.getText()
+  public async getNoDataText(): Promise<string> {
+    return this.noData.getData()
   }
 }
 

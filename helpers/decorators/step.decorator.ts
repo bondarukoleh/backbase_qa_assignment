@@ -1,8 +1,8 @@
 /* To make page functions like steps during execution, with screenshots and logging */
-import { ElementFinder } from 'protractor'
+import {ElementFinder} from 'protractor'
 import {takeScreenshot} from '../allure.screenshot'
 
-const ENV_ARGS = process.argv.slice(2);
+const ENV_ARGS = process.argv.slice(2)
 const SPEC_REPORTER = ENV_ARGS.includes('--debugging')
 
 declare const allure: any

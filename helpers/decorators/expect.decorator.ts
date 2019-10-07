@@ -1,6 +1,6 @@
 import {takeScreenshot} from '../allure.screenshot'
 
-const ENV_ARGS = process.argv.slice(2);
+const ENV_ARGS = process.argv.slice(2)
 const SPEC_REPORTER = ENV_ARGS.includes('--debugging')
 declare const allure: any
 

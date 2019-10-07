@@ -1,5 +1,5 @@
-import { ElementFinder, ElementArrayFinder, browser, element, by } from 'protractor'
-import { waitForVisible } from '../../helpers'
+import {ElementFinder, ElementArrayFinder, browser, element, by} from 'protractor'
+import {waitForVisible} from '../../helpers'
 
 interface ITable {
   getData: () => Promise<object[]>
@@ -37,4 +37,4 @@ class Table {
   }
 }
 
-export { Table, ITable }
+export {Table, ITable}

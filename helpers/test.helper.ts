@@ -1,6 +1,6 @@
-import { IComputersPage, IEditComputerPage, IAddComputerPage } from '../page_objects/pages'
-import { IComputerData } from '../page_objects/fragments';
-import { browser } from 'protractor';
+import {IComputersPage, IEditComputerPage, IAddComputerPage} from '../page_objects/pages'
+import {IComputerData} from '../page_objects/fragments'
+import {browser} from 'protractor'
 
 function getTestHelper(computersPage: IComputersPage,
                        editComputerPage?: IEditComputerPage,
@@ -21,4 +21,4 @@ function getTestHelper(computersPage: IComputersPage,
   }
 }
 
-export { getTestHelper }
+export {getTestHelper}

@@ -1,6 +1,6 @@
-import * as faker from 'faker';
-import * as moment from 'moment';
-import {Companies} from '.'
+import * as faker from 'faker'
+import * as moment from 'moment'
+import {Companies} from './data'
 
 interface IComputer {
   computerName?: string
@@ -15,8 +15,8 @@ const getAnyComputer = (): IComputer => {
     introducedData: moment(faker.date.between('1950-01-01', '2019-01-01')).format('YYYY-MM-DD'),
     discontinuedData: moment(faker.date.between('1960-01-01', '2019-01-01')).format('YYYY-MM-DD'),
     company: getRandomCompany() as Companies,
-  };
-};
+  }
+}
 
 const getNotValidFormatData = (): string => moment(faker.date.between('1950-01-01', '2019-01-01')).format('MM-DD-YYYY')
 

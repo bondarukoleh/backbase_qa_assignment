@@ -1,14 +1,14 @@
-import { pages } from '../page_objects'
-import {assertion, getTestHelper } from '../helpers';
+import {pages} from '../page_objects'
+import {assertion, getTestHelper} from '../helpers'
 import {getAnyComputer} from '../data'
-import { expect } from 'chai'
+import {expect} from 'chai'
 
-const { computersPage, addComputerPage, editComputerPage } = pages
+const {computersPage, addComputerPage, editComputerPage} = pages
 const testHelper = getTestHelper(computersPage, editComputerPage, addComputerPage)
 
 describe('Edit computer', function () {
   const computerData = getAnyComputer()
-  const { company, computerName, ...newComputerData } = getAnyComputer()
+  const {company, computerName, ...newComputerData} = getAnyComputer()
 
   beforeEach(async () => {
     await testHelper.createComputer(computerData)
@@ -29,9 +29,9 @@ describe('Edit computer', function () {
 
     await assertion(`Computer data can be edited`, async () => {
       expect(formData.introducedData.value).eq(newComputerData.introducedData,
-        `Field Introduced data is not changed to "${newComputerData.introducedData}"`)
+          `Field Introduced data is not changed to "${newComputerData.introducedData}"`)
       expect(formData.discontinuedData.value).eq(newComputerData.discontinuedData,
-        `Field Discontinued data is not changed to "${newComputerData.discontinuedData}"`)
+          `Field Discontinued data is not changed to "${newComputerData.discontinuedData}"`)
     })
   })
 })

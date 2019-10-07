@@ -1,7 +1,7 @@
 import {SharedForm, ISharedForm} from '../fragments'
 import {Button, IButton} from '../elements'
 import {$} from 'protractor'
-import { step } from '../../helpers';
+import {step} from '../../helpers'
 
 interface IEditComputerPage {
   editComputerForm: ISharedForm

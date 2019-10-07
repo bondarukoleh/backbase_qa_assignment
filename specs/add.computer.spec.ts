@@ -1,6 +1,6 @@
 import {browser} from 'protractor'
 import {pages} from '../page_objects'
-import {assertion, getTestHelper} from '../helpers';
+import {assertion, getTestHelper} from '../helpers'
 import {getAnyComputer, getNotValidFormatData} from '../data'
 import {expect} from 'chai'
 

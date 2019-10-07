@@ -1,9 +1,9 @@
-import { pages } from '../page_objects'
-import {assertion, getTestHelper } from '../helpers';
+import {pages} from '../page_objects'
+import {assertion, getTestHelper} from '../helpers'
 import {getAnyComputer} from '../data'
-import { expect } from 'chai'
+import {expect} from 'chai'
 
-const { computersPage, editComputerPage, addComputerPage } = pages
+const {computersPage, editComputerPage, addComputerPage} = pages
 const testHelper = getTestHelper(computersPage, editComputerPage, addComputerPage)
 
 describe('Filter computer', function () {
@@ -23,7 +23,7 @@ describe('Filter computer', function () {
 
     await assertion(`Created computer shows in filtered table data`, async () => {
       expect(!!tableData.find((computer) => computer['Computer name'] === computerData.computerName))
-        .eq(true, `Computer "${computerData.computerName}" is not in the table.`)
+          .eq(true, `Computer "${computerData.computerName}" is not in the table.`)
     })
   })
 })

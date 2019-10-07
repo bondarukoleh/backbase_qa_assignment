@@ -1,7 +1,7 @@
 import {browser, Config} from 'protractor'
 import {urls} from '../data'
 
-const ENV_ARGS = process.argv.slice(2);
+const ENV_ARGS = process.argv.slice(2)
 
 const config: Config = {
   // seleniumAddress: 'http://localhost:4444/wd/hub', /*You can run selenium standalone by yourself.*/
@@ -38,7 +38,7 @@ const config: Config = {
   onPrepare: async () => {
     await browser.waitForAngularEnabled(false)
     await browser.manage().window().maximize()
-    browser.ignoreSynchronization = true;
+    browser.ignoreSynchronization = true
   }
 }
 

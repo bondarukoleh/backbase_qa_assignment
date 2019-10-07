@@ -14,6 +14,7 @@ async function allureScreenShot(title: string = 'Screenshoot'): Promise<void> {
   }
 }
 
-const stubScreenshot = (title: string = 'Stub') => {}
+const stubScreenshot = (title: string = 'Stub') => {
+}
 
 export const takeScreenshot = ENV_ARGS.includes('--debugging') ? stubScreenshot : allureScreenShot
