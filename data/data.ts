@@ -6,7 +6,7 @@ const urls = {
 }
 
 enum Companies {
-  AppleInc = 'Apple Inc.',
+  appleInc = 'Apple Inc.',
   thinkingMachines = 'Thinking Machines',
   rCA = 'RCA',
   netronics = 'Netronics',

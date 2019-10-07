@@ -1,10 +1,15 @@
 import {waitForVisible} from '../../helpers'
 import {browser} from 'protractor'
 
+interface IGetInputData {
+  value: string,
+  error: boolean
+}
+
 interface IInput {
   click: () => Promise<void>
   sendKeys: (data: string) => Promise<void>
-  getData: () => Promise<string>
+  getData: () => Promise<IGetInputData>
 }
 
 class Input implements IInput {
@@ -23,10 +28,13 @@ class Input implements IInput {
     return this.root.sendKeys(data)
   }
 
-  public async getData(): Promise<string> {
+  public async getData(): Promise<IGetInputData> {
     await waitForVisible(this.root)
-    return await browser.executeScript((elem) => elem.value, this.root.getWebElement()) as string
+    return await browser.executeScript((elem) => ({
+      value: elem.value,
+      error: elem.parentElement.parentElement.getAttribute('class').includes('error')
+    }), this.root.getWebElement()) as IGetInputData
   }
 }
 
-export {Input, IInput}
+export {Input, IInput, IGetInputData}

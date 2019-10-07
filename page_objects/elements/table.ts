@@ -1,9 +1,9 @@
-import {ElementFinder, ElementArrayFinder} from 'protractor'
-
-import {waitForVisible} from '../../helpers'
+import { ElementFinder, ElementArrayFinder, browser, element, by } from 'protractor'
+import { waitForVisible } from '../../helpers'
 
 interface ITable {
   getData: () => Promise<object[]>
+  click: (computersName: string) => Promise<void>
 }
 
 class Table {
@@ -13,6 +13,14 @@ class Table {
   constructor(private root: ElementFinder) {
     this.headers = this.root.$$('th')
     this.rows = this.root.$$('tbody tr')
+  }
+
+  public async click(computerName: string): Promise<void> {
+    await waitForVisible(this.root)
+    const computerToClick = await element(by.js(function (rows, computer) {
+      return Array.prototype.find.call(rows, (row) => row.querySelector('td').innerText === computer).querySelector('td a')
+    }, this.rows.getWebElements(), computerName))
+    return computerToClick.click()
   }
 
   public async getData(): Promise<object[]> {
@@ -29,4 +37,4 @@ class Table {
   }
 }
 
-export {Table, ITable}
+export { Table, ITable }

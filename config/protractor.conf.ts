@@ -5,7 +5,6 @@ const ENV_ARGS = process.argv.slice(2);
 
 const config: Config = {
   // seleniumAddress: 'http://localhost:4444/wd/hub', /*You can run selenium standalone by yourself.*/
-  // seleniumSessionId: '',
   directConnect: ENV_ARGS.includes('--directConnect'),
   framework: 'mocha',
   mochaOpts: {
@@ -13,7 +12,7 @@ const config: Config = {
     fullTrace: true,
     reporter: ENV_ARGS.includes('--debugging') ? 'spec' : 'mocha-allure-reporter'
   },
-  specs: ['./specs/**/*.spec.*'],
+  specs: ['./specs/delete.*'],
   baseUrl: urls.main,
   allScriptsTimeout: 30 * 1000,
   capabilities: {

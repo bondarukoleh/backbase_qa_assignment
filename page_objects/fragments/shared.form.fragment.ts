@@ -1,5 +1,5 @@
 import {by, element} from 'protractor'
-import {Button, IButton, Input, IInput, Select, ISelect} from '../elements'
+import {Button, IButton, Input, IInput, IGetInputData, Select, ISelect} from '../elements'
 import {Companies} from '../../data'
 import {step} from '../../helpers/decorators'
 
@@ -11,9 +11,9 @@ interface IComputerData {
 }
 
 interface IGetForm {
-  computerName: string
-  introducedData: string
-  discontinuedData: string
+  computerName: IGetInputData
+  introducedData: IGetInputData
+  discontinuedData: IGetInputData
   company: string
 }
 
@@ -37,6 +37,7 @@ class SharedForm implements ISharedForm {
     this.cancel = new Button(element(by.buttonText('Cancel')))
   }
 
+  /* Step should be on page, but time is short and this is a test example */
   @step('Fill Form')
   public async fillForm(fillFormData: IComputerData): Promise<void> {
     // Shorter way to sendKeys to inputs, keys of fillFormData should be same name with class input fields
@@ -55,10 +56,12 @@ class SharedForm implements ISharedForm {
     }
   }
 
+  @step('Clicking cancel')
   public async clickCancel() {
     return this.cancel.click()
   }
 
+  @step('Getting Cancel')
   public async getCancel() {
     return this.cancel.getData()
   }

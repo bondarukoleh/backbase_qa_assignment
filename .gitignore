@@ -6,4 +6,5 @@ allure-results
 allure-report
 .jshintrc
 .jshintignore
+*.log
 build
