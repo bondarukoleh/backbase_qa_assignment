@@ -17,10 +17,10 @@ describe('Delete computer', function () {
     const noDataText = 'Nothing to display'
 
     await computersPage.filterBy(computerData.computerName)
-    await computersPage.computersTable.clickOnComputer(computerData.computerName)
+    await computersPage.clickTableComputer(computerData.computerName)
     await editComputerPage.clickDeleteButton()
     await computersPage.filterBy(computerData.computerName)
-    const noDataLabel = await computersPage.computersTable.getNoDataText()
+    const noDataLabel = await computersPage.getNoDataText()
 
     await assertion(`Computer can be deleted`, async () => {
       expect(noDataLabel).eq(noDataText, `Computer "${computerData.computerName}" is not deleted.`)

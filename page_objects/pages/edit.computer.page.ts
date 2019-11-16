@@ -1,14 +1,17 @@
-import {SharedForm, ISharedForm} from '../fragments'
+import {SharedForm, ISharedForm, IComputerData, IGetForm} from '../fragments'
 import {Button, IButton} from '../elements'
 import {$} from 'protractor'
 import {step} from '../../helpers'
 
 interface IEditComputerPage {
-  editComputerForm: ISharedForm
   clickSaveButton(): Promise<void>
   getSaveButton(): Promise<string>
   clickDeleteButton(): Promise<void>
   getDeleteButton(): Promise<string>
+  fillComputerForm(data: IComputerData): Promise<void>
+  getComputerForm(): Promise<IGetForm>
+  clickCancelButton(): Promise<void>
+  getCancelButton(): Promise<string>
 }
 
 class EditComputerPage implements IEditComputerPage {
@@ -40,6 +43,26 @@ class EditComputerPage implements IEditComputerPage {
   @step('Getting Delete Button')
   public getDeleteButton(): Promise<string> {
     return this.deleteComputer.getData()
+  }
+
+  @step('Fill computer Form')
+  public fillComputerForm(data: IComputerData): Promise<void> {
+    return this.editComputerForm.fillForm(data)
+  }
+
+  @step('Get computer Form')
+  public getComputerForm(): Promise<IGetForm> {
+    return this.editComputerForm.getFormData()
+  }
+
+  @step(`Click Cancel button in computer form`)
+  public clickCancelButton(): Promise<void> {
+    return this.editComputerForm.clickCancel()
+  }
+
+  @step(`Get Cancel button in computer form`)
+  public getCancelButton(): Promise<string> {
+    return this.editComputerForm.getCancel()
   }
 }
 

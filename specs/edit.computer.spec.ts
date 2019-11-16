@@ -20,12 +20,12 @@ describe('Edit computer', function () {
 
   it('Test Case #3. Edit added computer.', async function () {
     await computersPage.filterBy(computerData.computerName)
-    await computersPage.computersTable.clickOnComputer(computerData.computerName)
-    await editComputerPage.editComputerForm.fillForm(newComputerData)
+    await computersPage.clickTableComputer(computerData.computerName)
+    await editComputerPage.fillComputerForm(newComputerData)
     await editComputerPage.clickSaveButton()
     await computersPage.filterBy(computerData.computerName)
-    await computersPage.computersTable.clickOnComputer(computerData.computerName)
-    const formData = await editComputerPage.editComputerForm.getFormData()
+    await computersPage.clickTableComputer(computerData.computerName)
+    const formData = await editComputerPage.getComputerForm()
 
     await assertion(`Computer data can be edited`, async () => {
       expect(formData.introducedData.value).eq(newComputerData.introducedData,

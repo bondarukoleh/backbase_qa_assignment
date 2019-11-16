@@ -1,17 +1,19 @@
 import {$, by, element, ElementFinder} from 'protractor'
 import {Button, IButton, IInput, Input} from '../elements'
-import {ComputersTable, IComputersTable} from '../fragments'
+import {ComputersTable, IComputerData, IComputersTable} from '../fragments'
 import {sleep, step} from '../../helpers'
 
 interface IComputersPage {
-  computersTable: IComputersTable
-  filterBy: (computerName: string) => Promise<void>
-  clickAddNewComputer: () => Promise<void>
+  filterBy(computerName: string): Promise<void>
+  clickAddNewComputer(): Promise<void>
   getBannerText(): Promise<string>
+  clickTableComputer(computerName: string): Promise<void>
+  getComputersTable(): Promise<IComputerData[]>
+  getNoDataText(): Promise<string>
 }
 
 class ComputersPage implements IComputersPage {
-  public computersTable: IComputersTable
+  private computersTable: IComputersTable
   private filterButton: IButton
   private filterInput: IInput
   private addComputerButton: IButton
@@ -40,6 +42,21 @@ class ComputersPage implements IComputersPage {
   @step(`Getting banner text`)
   public async getBannerText(): Promise<string> {
     return await this.banner.getText()
+  }
+
+  @step('Clicking on computer from computer table')
+  public async clickTableComputer(computerName: string): Promise<void> {
+    return this.computersTable.clickOnComputer(computerName)
+  }
+
+  @step('Getting data from computer table')
+  public async getComputersTable(): Promise<IComputerData[]> {
+    return await this.computersTable.getComputersData() as IComputerData[]
+  }
+
+  @step('Getting no data text')
+  public async getNoDataText(): Promise<string> {
+    return this.computersTable.getNoDataText()
   }
 }
 

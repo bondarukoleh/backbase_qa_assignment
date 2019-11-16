@@ -9,13 +9,13 @@ function getTestHelper(computersPage: IComputersPage,
     async deleteComputer(computerData: IComputerData) {
       await browser.get('/')
       await computersPage.filterBy(computerData.computerName)
-      await computersPage.computersTable.clickOnComputer(computerData.computerName)
+      await computersPage.clickTableComputer(computerData.computerName)
       await editComputerPage.clickDeleteButton()
     },
     async createComputer(computerData: IComputerData) {
       await browser.get('/')
       await computersPage.clickAddNewComputer()
-      await addComputerPage.addComputerForm.fillForm(computerData)
+      await addComputerPage.fillComputerForm(computerData)
       await addComputerPage.clickCreateButton()
     }
   }

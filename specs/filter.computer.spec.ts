@@ -19,7 +19,7 @@ describe('Filter computer', function () {
 
   it('Test Case #4. Filter a computer.', async function () {
     await computersPage.filterBy(computerData.computerName)
-    const tableData = await computersPage.computersTable.getComputersData()
+    const tableData = await computersPage.getComputersTable()
 
     await assertion(`Created computer shows in filtered table data`, async () => {
       expect(!!tableData.find((computer) => computer['Computer name'] === computerData.computerName))

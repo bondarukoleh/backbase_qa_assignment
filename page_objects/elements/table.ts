@@ -18,7 +18,8 @@ class Table {
   public async click(computerName: string): Promise<void> {
     await waitForVisible(this.root)
     const computerToClick = await element(by.js(function (rows, computer) {
-      return Array.prototype.find.call(rows, (row) => row.querySelector('td').innerText === computer).querySelector('td a')
+      return Array.prototype.find.call(rows,
+        (row) => row.querySelector('td').innerText === computer).querySelector('td a')
     }, this.rows.getWebElements(), computerName))
     return computerToClick.click()
   }
